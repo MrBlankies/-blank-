@@ -3,5 +3,4 @@ This repository contains multiple projects, each organized into its own folder. 
 
 project.1: Leap or Not Leap year
 
-project.2: Starting, Ending and step
-
+project.2: Starting point, Ending point and Step
