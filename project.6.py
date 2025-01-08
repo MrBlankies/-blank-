@@ -36,13 +36,22 @@ else:
 
 filename = "users.csv"
 
-# Create users.csv file
-file = open(filename, "w")
-file.write("Username,PIN,First name,Last name\n")
+file = open(filename, "a")
 file.close()
 
+file = open(filename, "r")
+lines = file.readlines()
+file.close()
+
+# if file is empty, write the header
+if len(lines) == 0:
+    file = open(filename, "a")
+    file.write("Username,PIN,First name,Last name\n")
+    file.close()
+
+
 # Ask user if they have an account
-answer = input("Do you have an account (yes/no): ").lower()
+answer = input("Do you have an account (yes/no): ").lower().strip()
 
 if answer == "yes":
     # Log in with username and PIN
@@ -66,28 +75,29 @@ if answer == "yes":
     else:
         print("Invalid username or PIN.")
 
-else:
+elif answer == "no":
     # Create a new account
     print("No worries! Create one now.")
     username = input("Enter a username: ").strip()
     PIN = input("Enter a PIN: ").strip()
+    while not (PIN.isdigit() and len(PIN) == 4):
+        print("Not a 4 digit PIN")
+        PIN = input("Enter a PIN: ").strip()
     first_name = input("Enter your first name: ").strip()
     last_name = input("Enter your last name: ").strip()
 
-    if PIN.isdigit() and len(PIN) == 4:
-       
+    
+   
         # Check if username already exists
-        file = open(filename)
-        for line in file:
-            stored_username, stored_PIN, stored_first_name, stored_last_name  = line.strip().split(",")
-            if stored_username == username:
-                print("Username already exists. Please try again.")
-                exit()
-
-                # Add the new user to the file using write
-        file = open(filename, "a")  
-        file.write(f"{username},{PIN},{first_name},{last_name}\n")  
-
-        print(f"Account created successfully! Welcome, {first_name}.")
-    else:
-        print("Not a 4 digit PIN")
+    file = open(filename)
+    for line in file:
+        stored_username, stored_PIN, stored_first_name, stored_last_name  = line.strip().split(",")
+        if stored_username == username:
+            print("Username already exists. Please try again.")
+            exit()
+            # Add the new user to the file using write
+    file = open(filename, "a")  
+    file.write(f"{username},{PIN},{first_name},{last_name}\n")  
+    print(f"Account created successfully! Welcome, {first_name}.")
+else:
+    print("Invalid Answer.")
