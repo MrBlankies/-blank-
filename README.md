@@ -14,3 +14,9 @@ project.5: ( 2 PARTS ) 1st part. Types the first initial of the student and thei
 project.6: ( 2 PARTS ) 1st part. Input a word and check how many times it exists in the story.txt, 2nd part. Create an account for the user.
 
 project.7: ( 2 PARTS ) 1st part. From a list of students sum their grades and show who failed with an avg of below 40, 2nd part. Random activity using api.
+
+# Assessments
+
+assessment_1: Rock-Paper-Scissors game, with login and leaderboard option
+
+assessment_2: Quiz game, using API and with login
